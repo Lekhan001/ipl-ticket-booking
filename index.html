@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h2>IPL TICKETS</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About IPL</a></li>
+            <li><a href="#schedule">Matches</a></li>
+            <li><a href="#booking">Book Tickets</a></li>
+            <li><a href="#mybookings">My Bookings</a></li>
+            <li><a href="#guidelines">Guidelines</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page -->
+    <header id="home" class="hero">
+        <h1>WELCOME TO IPL 2027</h1>
+        <h2>Experience the Cricket Fever!</h2>
+        <p>Watch your favourite teams live in action.</p>
+        <a href="#schedule" class="btn">Explore Matches</a>
+    </header>
+
+    <!-- About IPL -->
+    <section id="about" class="section">
+        <h2>About IPL</h2>
+        <p>
+            The Indian Premier League (IPL) is one of the world's
+            most exciting T20 cricket leagues. It brings together
+            international cricket stars and talented Indian players.
+        </p>
+
+        <h3>Popular IPL Teams</h3>
+        <div class="team-container">
+            <div class="team-card">RCB</div>
+            <div class="team-card">CSK</div>
+            <div class="team-card">MI</div>
+            <div class="team-card">KKR</div>
+            <div class="team-card">SRH</div>
+            <div class="team-card">RR</div>
+            <div class="team-card">DC</div>
+            <div class="team-card">PBKS</div>
+            <div class="team-card">GT</div>
+            <div class="team-card">LSG</div>
+        </div>
+    </section>
+
+    <!-- Match Schedule -->
+    <section id="schedule" class="section">
+        <h2>IPL Match Schedule</h2>
+
+        <label for="teamFilter">Filter by Team:</label>
+        <select id="teamFilter">
+            <option value="all">All Teams</option>
+            <option value="RCB">RCB</option>
+            <option value="CSK">CSK</option>
+            <option value="MI">MI</option>
+            <option value="KKR">KKR</option>
+            <option value="SRH">SRH</option>
+        </select>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Match</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th>Ticket Price</th>
+                    </tr>
+                </thead>
+                <tbody id="matchTable">
+                    <tr>
+                        <td>RCB vs CSK</td>
+                        <td>25 April 2027</td>
+                        <td>Bengaluru</td>
+                        <td>₹1,500</td>
+                    </tr>
+                    <tr>
+                        <td>MI vs KKR</td>
+                        <td>28 April 2027</td>
+                        <td>Mumbai</td>
+                        <td>₹1,200</td>
+                    </tr>
+                    <tr>
+                        <td>SRH vs RR</td>
+                        <td>02 May 2027</td>
+                        <td>Hyderabad</td>
+                        <td>₹1,000</td>
+                    </tr>
+                    <tr>
+                        <td>CSK vs MI</td>
+                        <td>05 May 2027</td>
+                        <td>Chennai</td>
+                        <td>₹1,800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="note">Sample fixtures and prices for academic demonstration.</p>
+    </section>
+
+    <!-- Ticket Booking -->
+    <section id="booking" class="section">
+        <h2>Book Your Tickets</h2>
+
+        <form id="bookingForm">
+            <label>Customer Name</label>
+            <input type="text" id="customerName"
+                   placeholder="Enter your name" required>
+
+            <label>Email Address</label>
+            <input type="email" id="email"
+                   placeholder="Enter your email" required>
+
+            <label>Phone Number</label>
+            <input type="tel" id="phone"
+                   placeholder="Enter phone number" required>
+
+            <label>Select Match</label>
+            <select id="match" required>
+                <option value="">Choose Match</option>
+                <option>RCB vs CSK</option>
+                <option>MI vs KKR</option>
+                <option>SRH vs RR</option>
+                <option>CSK vs MI</option>
+            </select>
+
+            <label>Stand Category</label>
+            <select id="stand" required>
+                <option value="">Choose Stand</option>
+                <option value="1000">General - ₹1,000</option>
+                <option value="1500">Premium - ₹1,500</option>
+                <option value="3000">VIP - ₹3,000</option>
+            </select>
+
+            <label>Ticket Quantity</label>
+            <input type="number" id="quantity"
+                   min="1" max="10" value="1" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </section>
+
+    <!-- My Bookings -->
+    <section id="mybookings" class="section">
+        <h2>My Bookings</h2>
+        <div id="bookingList">
+            <p>No bookings yet. Book your tickets now!</p>
+        </div>
+    </section>
+
+    <!-- Booking Guidelines -->
+    <section id="guidelines" class="section">
+        <h2>Booking Guidelines</h2>
+
+        <div class="guideline-card">
+            <h3>Ticket Verification</h3>
+            <p>Carry your valid booking confirmation and ticket QR code.</p>
+        </div>
+
+        <div class="guideline-card">
+            <h3>ID Proof</h3>
+            <p>Carry a valid government-issued photo ID for verification.</p>
+        </div>
+
+        <div class="guideline-card">
+            <h3>Prohibited Items</h3>
+            <p>Weapons, fireworks, outside alcohol and other restricted
+               items are not allowed inside the stadium.</p>
+        </div>
+
+        <div class="guideline-card">
+            <h3>Important Instructions</h3>
+            <p>Arrive early and follow stadium security instructions.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>IPL TICKET BOOKING</h3>
+        <p>Book Your Seat. Feel the Excitement.</p>
+        <p>© 2026 IPL Ticket Booking. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
