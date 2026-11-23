@@ -315,3 +315,28 @@ footer h3 {
         font-size: 13px;
     }
 }
+/* Toast Notification */
+
+#toast {
+    visibility: hidden;
+    background: #071952;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#toast.show {
+    visibility: visible;
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
