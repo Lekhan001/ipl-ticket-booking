@@ -5,174 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPL Ticket Booking</title>
-
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f4f8;
-            padding: 20px;
-        }
-
-        .booking-container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #203d91;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin: 15px 0 8px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            font-size: 15px;
-        }
-
-        .preferences {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .preferences label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0;
-        }
-
-        .preferences input {
-            width: auto;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        button {
-            padding: 12px 22px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            color: white;
-            background: #203d91;
-            font-size: 15px;
-        }
-
-        button[type="reset"] {
-            background: #e32626;
-        }
-
-        #toast {
-            visibility: hidden;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #071952;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            z-index: 2000;
-            text-align: center;
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: fadeIn 0.4s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="booking-container">
+<div class="activity7-container">
 
-    <h1>IPL Ticket Booking</h1>
+    <h1>IPL 2026 TICKETS</h1>
 
-    <form id="bookingForm">
+    <div class="booking-layout">
 
-        <label>Full Name</label>
-        <input type="text" id="name"
-               placeholder="Enter your name" required>
+        <!-- Booking Form -->
+        <div class="booking-form">
 
-        <label>Email Address</label>
-        <input type="email" id="email"
-               placeholder="Enter your email" required>
+            <h2>Book Your Ticket</h2>
 
-        <label>Phone Number</label>
-        <input type="tel" id="phone"
-               placeholder="10-digit mobile number"
-               pattern="[0-9]{10}" required>
+            <form id="bookingForm">
 
-        <label>Select Match</label>
-        <select id="match" required>
-            <option value="">-- Select Match --</option>
-            <option>RCB vs CSK</option>
-            <option>MI vs KKR</option>
-            <option>SRH vs RR</option>
-            <option>GT vs LSG</option>
-        </select>
+                <label>Select Match</label>
+                <select id="match" required>
+                    <option value="">-- Choose a Match --</option>
+                    <option value="RCB vs CSK">RCB vs CSK</option>
+                    <option value="MI vs KKR">MI vs KKR</option>
+                    <option value="SRH vs RR">SRH vs RR</option>
+                    <option value="GT vs LSG">GT vs LSG</option>
+                </select>
 
-        <label>Stand Category</label>
-        <select id="category" required>
-            <option value="">-- Select Stand --</option>
-            <option>General Stand</option>
-            <option>Premium Stand</option>
-            <option>VIP Stand</option>
-        </select>
+                <label>Stand Category</label>
+                <select id="category" required>
+                    <option value="">-- Select Stand --</option>
+                    <option value="500">General Stand</option>
+                    <option value="1000">Premium Stand</option>
+                    <option value="2000">VIP Stand</option>
+                </select>
 
-        <label>Number of Tickets</label>
-        <input type="number" id="quantity"
-               min="1" max="10" required>
+                <label>Number of Tickets</label>
+                <input type="number" id="quantity"
+                       min="1" max="10" value="1" required>
 
-        <label>Additional Preference</label>
+                <label>Full Name</label>
+                <input type="text" id="name"
+                       placeholder="Enter your full name" required>
 
-        <div class="preferences">
-            <label>
-                <input type="radio" name="preference"
-                       value="Near Boundary">
-                Near Boundary
-            </label>
+                <label>Email Address</label>
+                <input type="email" id="email"
+                       placeholder="you@example.com" required>
 
-            <label>
-                <input type="radio" name="preference"
-                       value="Regular Seating">
-                Regular Seating
-            </label>
+                <label>Phone Number</label>
+                <input type="tel" id="phone"
+                       placeholder="10-digit phone number"
+                       pattern="[0-9]{10}" required>
+
+                <div class="form-buttons">
+                    <button type="submit">Book Tickets</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                </div>
+
+            </form>
         </div>
 
-        <div class="buttons">
-            <button type="submit">Book Tickets</button>
-            <button type="reset">Reset</button>
+        <!-- Booking Summary -->
+        <div class="summary-card">
+
+            <h2>Booking Summary</h2>
+
+            <div class="summary-row">
+                <span>Match:</span>
+                <strong id="summaryMatch">Not Selected</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Stand:</span>
+                <strong id="summaryStand">Not Selected</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Ticket Price:</span>
+                <strong id="ticketPrice">₹0</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Quantity:</span>
+                <strong id="summaryQuantity">1</strong>
+            </div>
+
+            <hr>
+
+            <div class="total-row">
+                <span>Total Amount:</span>
+                <strong id="summaryTotal">₹0</strong>
+            </div>
+
         </div>
 
-    </form>
+    </div>
+
 </div>
 
-<div id="toast" role="status" aria-live="polite"></div>
+<div id="toast"></div>
 
 <script src="app.js"></script>
 
