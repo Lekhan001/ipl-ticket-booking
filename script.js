@@ -1,103 +1,100 @@
 
-// ===== IPL TEAM FILTER =====
+// Get HTML Elements
+const gridBtn = document.getElementById("gridBtn");
+const listBtn = document.getElementById("listBtn");
+const matchContainer = document.getElementById("matchContainer");
 
+
+// GRID VIEW BUTTON
+gridBtn.addEventListener("click", function() {
+
+    matchContainer.classList.remove("list-view");
+
+    gridBtn.classList.add("active");
+    listBtn.classList.remove("active");
+
+});
+
+
+// LIST VIEW BUTTON
+listBtn.addEventListener("click", function() {
+
+    matchContainer.classList.add("list-view");
+
+    listBtn.classList.add("active");
+    gridBtn.classList.remove("active");
+
+});
+
+
+// TEAM FILTER
 const teamFilter = document.getElementById("teamFilter");
-const matchTable = document.getElementById("matchTable");
+const matchCards = document.querySelectorAll(".match-card");
 
-teamFilter.addEventListener("change", function () {
-    const selectedTeam = this.value;
-    const rows = matchTable.querySelectorAll("tr");
+teamFilter.addEventListener("change", function() {
 
-    rows.forEach(row => {
-        const match = row.cells[0].textContent;
+    const selectedTeam = teamFilter.value;
 
-        if (selectedTeam === "all" || match.includes(selectedTeam)) {
-            row.style.display = "";
+    matchCards.forEach(function(card) {
+
+        const teams = card.dataset.teams.split(" ");
+
+        if (
+            selectedTeam === "all" ||
+            teams.includes(selectedTeam)
+        ) {
+            card.style.display = "";
         } else {
-            row.style.display = "none";
+            card.style.display = "none";
         }
+
     });
+
 });
 
 
-// ===== TICKET BOOKING SYSTEM =====
+// HAMBURGER MENU
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-const bookingForm = document.getElementById("bookingForm");
-const bookingList = document.getElementById("bookingList");
+menuBtn.addEventListener("click", function() {
 
-let bookings = [];
+    navMenu.classList.toggle("active");
 
-bookingForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+    const isOpen = navMenu.classList.contains("active");
 
-    const name = document.getElementById("customerName").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const match = document.getElementById("match").value;
-    const stand = document.getElementById("stand").value;
-    const quantity = Number(document.getElementById("quantity").value);
+    menuBtn.textContent = isOpen ? "✕" : "☰";
 
-    if (!/^\d{10}$/.test(phone)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-    }
+    menuBtn.setAttribute("aria-expanded", isOpen);
 
-    const total = Number(stand) * quantity;
-    const bookingId = "IPL" + Date.now().toString().slice(-6);
-
-    const booking = {
-        bookingId,
-        name,
-        email,
-        phone,
-        match,
-        stand,
-        quantity,
-        total
-    };
-
-    bookings.push(booking);
-
-    displayBookings();
-
-    alert("Booking successful! Your Booking ID is " + bookingId);
-
-    bookingForm.reset();
 });
 
 
-// ===== DISPLAY BOOKINGS =====
+// BOOK BUTTON
+document.querySelectorAll(".book-btn").forEach(function(button) {
 
-function displayBookings() {
-    bookingList.innerHTML = "";
+    button.addEventListener("click", function() {
 
-    bookings.forEach(booking => {
-        const card = document.createElement("div");
-        card.className = "guideline-card";
+        const match = button.parentElement.querySelector("h3").textContent;
 
-        const title = document.createElement("h3");
-        title.textContent = "Booking Confirmation";
+        alert("You selected " + match + ". Booking demonstration only!");
 
-        const details = document.createElement("p");
-        details.textContent =
-            "Booking ID: " + booking.bookingId +
-            " | Name: " + booking.name +
-            " | Match: " + booking.match +
-            " | Stand: " + getStandName(booking.stand) +
-            " | Quantity: " + booking.quantity +
-            " | Total: ₹" + booking.total;
-
-        card.append(title, details);
-        bookingList.appendChild(card);
     });
-}
+
+});
 
 
-// ===== STAND CATEGORY =====
+// CLOSE MOBILE MENU
+document.querySelectorAll("#navMenu a").forEach(function(link) {
 
-function getStandName(price) {
-    if (price === "1000") return "General";
-    if (price === "1500") return "Premium";
-    if (price === "3000") return "VIP";
-    return "Unknown";
-}
+    link.addEventListener("click", function() {
+
+        navMenu.classList.remove("active");
+
+        menuBtn.textContent = "☰";
+
+        menuBtn.setAttribute("aria-expanded", "false");
+
+    });
+
+});

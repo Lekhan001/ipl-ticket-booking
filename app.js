@@ -1,95 +1,160 @@
 
-/* IPL Ticket Booking - Activity 7 */
+// ======================================
+// IPL 2026 TICKET BOOKING WEBSITE
+// JavaScript Functionality
+// ======================================
 
-// Toast Notification
-function showToast(message) {
-    const toast = document.getElementById("toast");
 
-    toast.innerText = message;
-    toast.classList.add("show");
+// 1. GET HTML ELEMENTS
+const gridBtn = document.getElementById("gridBtn");
+const listBtn = document.getElementById("listBtn");
 
-    setTimeout(function() {
-        toast.classList.remove("show");
-    }, 2500);
-}
+const matchContainer = document.getElementById("matchContainer");
 
-// DOM Selectors
-const match = document.getElementById("match");
-const category = document.getElementById("category");
-const quantity = document.getElementById("quantity");
+const teamFilter = document.getElementById("teamFilter");
 
-const summaryMatch = document.getElementById("summaryMatch");
-const summaryStand = document.getElementById("summaryStand");
-const ticketPrice = document.getElementById("ticketPrice");
-const summaryQuantity = document.getElementById("summaryQuantity");
-const summaryTotal = document.getElementById("summaryTotal");
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-// Update Booking Summary
-function updateSummary() {
+const matchCards = document.querySelectorAll(".match-card");
 
-    const selectedMatch = match.value;
-    const selectedStand = category.options[category.selectedIndex].text;
-    const price = Number(category.value) || 0;
-    const tickets = Number(quantity.value) || 0;
 
-    summaryMatch.innerText = selectedMatch || "Not Selected";
+// ======================================
+// 2. GRID VIEW FUNCTION
+// ======================================
 
-    summaryStand.innerText = category.value
-        ? selectedStand
-        : "Not Selected";
+gridBtn.addEventListener("click", function () {
 
-    ticketPrice.innerText = "₹" + price;
+    // Remove list view class
+    matchContainer.classList.remove("list-view");
 
-    summaryQuantity.innerText = tickets;
+    // Highlight Grid button
+    gridBtn.classList.add("active");
 
-    const total = price * tickets;
-
-    summaryTotal.innerText = "₹" + total;
-
-    showToast("Booking Summary Updated!");
-}
-
-// Change Event Listeners
-match.addEventListener("change", updateSummary);
-
-category.addEventListener("change", updateSummary);
-
-quantity.addEventListener("input", function() {
-
-    if (quantity.value !== "" &&
-        (Number(quantity.value) < 1 ||
-         Number(quantity.value) > 10)) {
-        showToast("Enter between 1 and 10 tickets");
-        return;
-    }
-
-    updateSummary();
-});
-
-// Booking Form Submission
-document.getElementById("bookingForm").addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    updateSummary();
-
-    showToast("Your booking was successful!");
+    // Remove highlight from List button
+    listBtn.classList.remove("active");
 
 });
 
-// Reset Form
-document.getElementById("bookingForm").addEventListener("reset", function() {
 
-    setTimeout(function() {
+// ======================================
+// 3. LIST VIEW FUNCTION
+// ======================================
 
-        summaryMatch.innerText = "Not Selected";
-        summaryStand.innerText = "Not Selected";
-        ticketPrice.innerText = "₹0";
-        summaryQuantity.innerText = "1";
-        summaryTotal.innerText = "₹0";
+listBtn.addEventListener("click", function () {
 
-        showToast("Form Reset Successfully!");
+    // Add list view class
+    matchContainer.classList.add("list-view");
 
-    }, 0);
+    // Highlight List button
+    listBtn.classList.add("active");
+
+    // Remove highlight from Grid button
+    gridBtn.classList.remove("active");
 
 });
+
+
+// ======================================
+// 4. TEAM FILTER FUNCTION
+// ======================================
+
+teamFilter.addEventListener("change", function () {
+
+    const selectedTeam = teamFilter.value;
+
+    matchCards.forEach(function (card) {
+
+        // Get teams from match card
+        const teams = card.dataset.teams.split(" ");
+
+        // Show or hide match cards
+        if (
+            selectedTeam === "all" ||
+            teams.includes(selectedTeam)
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+
+
+// ======================================
+// 5. HAMBURGER MENU FUNCTION
+// ======================================
+
+menuBtn.addEventListener("click", function () {
+
+    // Toggle mobile navigation
+    navMenu.classList.toggle("active");
+
+    // Check menu status
+    const isOpen = navMenu.classList.contains("active");
+
+    // Change hamburger icon
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+
+    // Update accessibility attribute
+    menuBtn.setAttribute("aria-expanded", isOpen);
+
+});
+
+
+// ======================================
+// 6. CLOSE MOBILE MENU
+// ======================================
+
+const navLinks = document.querySelectorAll("#navMenu a");
+
+navLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navMenu.classList.remove("active");
+
+        menuBtn.textContent = "☰";
+
+        menuBtn.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+
+// ======================================
+// 7. BOOK TICKET BUTTON FUNCTION
+// ======================================
+
+const bookButtons = document.querySelectorAll(".book-btn");
+
+bookButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const matchName = button.parentElement.querySelector("h3").textContent;
+
+        alert(
+            "Welcome to IPL Ticket Booking!\n\n" +
+            "You selected: " + matchName +
+            "\n\nThis is a booking demonstration only."
+        );
+
+    });
+
+});
+
+
+// ======================================
+// 8. WEBSITE LOADED MESSAGE
+// ======================================
+
+console.log("IPL Ticket Booking Website Loaded Successfully!");
+console.log("Grid View, List View, Team Filter and Mobile Menu Ready!");
