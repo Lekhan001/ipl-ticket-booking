@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="activity7-container">
+
+    <h1>IPL 2026 TICKETS</h1>
+
+    <div class="booking-layout">
+
+        <!-- Booking Form -->
+        <div class="booking-form">
+
+            <h2>Book Your Ticket</h2>
+
+            <form id="bookingForm">
+
+                <label>Select Match</label>
+                <select id="match" required>
+                    <option value="">-- Choose a Match --</option>
+                    <option value="RCB vs CSK">RCB vs CSK</option>
+                    <option value="MI vs KKR">MI vs KKR</option>
+                    <option value="SRH vs RR">SRH vs RR</option>
+                    <option value="GT vs LSG">GT vs LSG</option>
+                </select>
+
+                <label>Stand Category</label>
+                <select id="category" required>
+                    <option value="">-- Select Stand --</option>
+                    <option value="500">General Stand</option>
+                    <option value="1000">Premium Stand</option>
+                    <option value="2000">VIP Stand</option>
+                </select>
+
+                <label>Number of Tickets</label>
+                <input type="number" id="quantity"
+                       min="1" max="10" value="1" required>
+
+                <label>Full Name</label>
+                <input type="text" id="name"
+                       placeholder="Enter your full name" required>
+
+                <label>Email Address</label>
+                <input type="email" id="email"
+                       placeholder="you@example.com" required>
+
+                <label>Phone Number</label>
+                <input type="tel" id="phone"
+                       placeholder="10-digit phone number"
+                       pattern="[0-9]{10}" required>
+
+                <div class="form-buttons">
+                    <button type="submit">Book Tickets</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Booking Summary -->
+        <div class="summary-card">
+
+            <h2>Booking Summary</h2>
+
+            <div class="summary-row">
+                <span>Match:</span>
+                <strong id="summaryMatch">Not Selected</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Stand:</span>
+                <strong id="summaryStand">Not Selected</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Ticket Price:</span>
+                <strong id="ticketPrice">₹0</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Quantity:</span>
+                <strong id="summaryQuantity">1</strong>
+            </div>
+
+            <hr>
+
+            <div class="total-row">
+                <span>Total Amount:</span>
+                <strong id="summaryTotal">₹0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

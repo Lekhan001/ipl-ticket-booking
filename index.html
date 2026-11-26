@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,4 +11,171 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL 2026 Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <h2>IPL 2026 TICKETS</h2>
+
+        <button class="menu-btn" id="menuBtn"
+            aria-label="Toggle menu"
+            aria-expanded="false">☰</button>
+
+        <nav id="navMenu">
+            <a href="#matches">Matches</a>
+            <a href="#booking">Book Ticket</a>
+            <a href="#guidelines">Guidelines</a>
+        </nav>
+    </header>
+
+    <!-- Match Schedule -->
+    <section class="schedule" id="matches">
+        <h2>Match Schedule</h2>
+
+        <div class="controls">
+            <div class="filter-box">
+                <label for="teamFilter">Filter by Team:</label>
+
+                <select id="teamFilter">
+                    <option value="all">All Teams</option>
+                    <option value="CSK">CSK</option>
+                    <option value="RCB">RCB</option>
+                    <option value="MI">MI</option>
+                    <option value="KKR">KKR</option>
+                    <option value="SRH">SRH</option>
+                    <option value="GT">GT</option>
+                    <option value="RR">RR</option>
+                </select>
+            </div>
+
+            <div class="view-buttons">
+                <button type="button" id="gridBtn" class="active">
+                    Grid View
+                </button>
+
+                <button type="button" id="listBtn">
+                    List View
+                </button>
+            </div>
+        </div>
+
+        <!-- Match Cards -->
+        <div class="match-container" id="matchContainer">
+
+            <div class="match-card" data-teams="CSK RCB">
+                <div class="match-info">
+                    <span>MATCH 1</span>
+                    <small>22 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>CSK vs RCB</h3>
+                <p>M. A. Chidambaram Stadium, Chennai</p>
+                <p>Tickets: ₹1,500 / ₹3,500 / ₹8,000</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+            <div class="match-card" data-teams="MI KKR">
+                <div class="match-info">
+                    <span>MATCH 2</span>
+                    <small>23 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>MI vs KKR</h3>
+                <p>Wankhede Stadium, Mumbai</p>
+                <p>Tickets: ₹1,800 / ₹4,000 / ₹9,500</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+            <div class="match-card" data-teams="RCB SRH">
+                <div class="match-info">
+                    <span>MATCH 3</span>
+                    <small>25 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>RCB vs SRH</h3>
+                <p>M. Chinnaswamy Stadium, Bengaluru</p>
+                <p>Tickets: ₹2,000 / ₹5,000 / ₹10,000</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+            <div class="match-card" data-teams="CSK MI">
+                <div class="match-info">
+                    <span>MATCH 4</span>
+                    <small>26 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>CSK vs MI</h3>
+                <p>M. A. Chidambaram Stadium, Chennai</p>
+                <p>Tickets: ₹1,500 / ₹4,000 / ₹8,500</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+            <div class="match-card" data-teams="GT RR">
+                <div class="match-info">
+                    <span>MATCH 5</span>
+                    <small>27 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>GT vs RR</h3>
+                <p>Narendra Modi Stadium, Ahmedabad</p>
+                <p>Tickets: ₹1,800 / ₹3,500 / ₹7,000</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+            <div class="match-card" data-teams="KKR SRH">
+                <div class="match-info">
+                    <span>MATCH 6</span>
+                    <small>28 Mar 2026 • 7:30 PM IST</small>
+                </div>
+                <h3>KKR vs SRH</h3>
+                <p>Eden Gardens, Kolkata</p>
+                <p>Tickets: ₹1,500 / ₹3,000 / ₹6,500</p>
+                <button class="book-btn">Book</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <h2>Book Your Ticket</h2>
+        <p>Choose your favourite match and enjoy the IPL experience!</p>
+    </section>
+
+    <!-- Guidelines -->
+    <section class="guidelines" id="guidelines">
+        <h2>IPL Guidelines</h2>
+
+        <div class="guideline-grid">
+            <div class="guideline-card">
+                <h3>Match Rules</h3>
+                <p>Follow official cricket rules and match regulations.</p>
+            </div>
+
+            <div class="guideline-card">
+                <h3>Stadium Rules</h3>
+                <p>Carry your valid ticket and follow stadium safety instructions.</p>
+            </div>
+
+            <div class="guideline-card">
+                <h3>Sportsmanship</h3>
+                <p>Respect players, teams, officials and spectators.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 IPL Tickets | All Rights Reserved</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+>>>>>>> 1e8d3ec4146aacb7632dc866f1a0bb404ead347a
 </html>
